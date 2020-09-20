@@ -1,0 +1,32 @@
+$variable = $connection->real_escape_string($variable);
+To get rid of unwanted slashes, use:
+$variable = stripslashes($variable);
+And to remove any HTML from a string, use the following:
+$variable = htmlentities($variable);
+
+
+?php
+function
+{
+$var =
+$var =
+$var =
+return
+}
+sanitizeString($var)
+stripslashes($var);
+htmlentities($var);
+strip_tags($var);
+$var;
+function sanitizeMySQL($connection, $var)
+{ // Using the mysqli extension
+$var = $connection->real_escape_string($var);
+$var = sanitizeString($var);
+return $var;
+}
+?>
+
+$token = hash('ripemd128', 'mypassword');
+$token = hash('ripemd128', 'hqb%$tmypasswordcg*l');
+
+ini_set('session.save_path', '/home/user/myaccount/sessions');

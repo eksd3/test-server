@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Sephia Filter</title>
+		<meta charset="UTF-8"/>
+		<script src="osc.js"></script>
+	</head>
+	<body>
+		<canvas id="canvas_main" width="640" height="240" style="border: 1px solid #000000;"></canvas>
+		<script>
+			window.onload = function() {
+				var canvas = document.getElementById("canvas_main");
+				var context = canvas.getContext("2d");
+				var img = new Image();
+				img.src = "paper.png";
+				context.drawImage(img, 0, 0);
+				img.onload = function() {
+					idata = context.getImageData(0, 0, img.width, img.height);
+					for (y = 0; y < img.height; y++) {
+						pos = y * img.width * 4;
+						for (x = 0; x < img.width; x++) {
+							average = (idata.data[pos] + idata.data[pos + 1] + idata.data[pos + 2]) / 3;
+							idata.data[pos] = average + 25;
+							idata.data[pos + 1] = average;
+							idata.data[pos + 2] = average;
+							pos += 4;
+						}
+					}
+					context.putImageData(idata, 320, 0);
+				}
+			}
+		</script>
+	</body>
+</html>

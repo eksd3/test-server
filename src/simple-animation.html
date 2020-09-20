@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Simple Animation</title>
+		<script src="osc.js"></script>
+		<style>
+#box {
+	position: absolute;
+	background: orange;
+	border: 1px solid red;
+}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+
+			function animate() {
+				SIZE += 10;
+				LEFT += 3;
+
+				if (SIZE == 200) SIZE = 0;
+				if (LEFT == 600) LEFT = 0;
+
+				S("box").width = SIZE + "px";
+				S("box").height = SIZE + "px";
+				S("box").left = LEFT + "px";
+			}
+			SIZE = LEFT = 0;
+
+			setInterval(animate, 50)
+		</script>
+	</body>
+</html>
+
